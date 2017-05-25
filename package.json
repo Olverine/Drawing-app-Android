@@ -1,0 +1,22 @@
+{
+    "name": "com.olivernorin.draw",
+    "version": "1.0.0",
+    "displayName": "DrawingApp",
+    "cordova": {
+        "platforms": [
+            "android",
+            "browser"
+        ],
+        "plugins": {
+            "cordova-plugin-whitelist": {},
+            "cordova-plugin-screen-orientation": {}
+        }
+    },
+    "dependencies": {
+        "cordova-android": "~6.2.3",
+        "cordova-browser": "^4.1.0",
+        "cordova-plugin-screen-orientation": "^2.0.1",
+        "cordova-plugin-whitelist": "1",
+        "es6-promise-plugin": "git+https://github.com/vstirbu/PromisesPlugin.git"
+    }
+}

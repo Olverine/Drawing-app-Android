@@ -1,0 +1,18 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.OliverNorin.Draw"
+        },
+        "cordova-plugin-screen-orientation": {
+            "PACKAGE_NAME": "com.OliverNorin.Draw"
+        }
+    },
+    "dependent_plugins": {}
+}
