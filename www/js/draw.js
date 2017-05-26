@@ -8,7 +8,12 @@ var color = document.getElementById("color");
 
 var drawing = false;
 
-var scalefactor = c.height / c.getBoundingClientRect().height;
+var scalefactor = 1;
+
+function setScaleFactor(){
+	scalefactor = c.height / window.innerHeight;
+	console.log(scalefactor);
+}
 
 c.onmousedown = function(){
 	setToolbarExpanded(false);
@@ -43,6 +48,7 @@ function getMousePos(canv, evt) {
 }
 
 function getTouchPos(canv, evt) {
+	setScaleFactor();
     var rect = canv.getBoundingClientRect();
     var touch = evt.touches[0];
     return {
@@ -80,8 +86,6 @@ function draw(pos1, pos2, tool, color, width, emit){
 			ctx.clearRect(pos2.x - width, pos2.y - width, width * 2, width * 2);
 		break;
 	}
-
-	console.log(scalefactor);
 
 	if(emit)
 		socket.emit("draw", pos1.x / 2, pos1.y / 2, pos2.x / 2, pos2.y / 2, color, width / 2, tool);

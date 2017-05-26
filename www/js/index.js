@@ -36,9 +36,13 @@ var app = {
         toolbarButton.addEventListener("click", toggleToolbar);
 
         socket = io.connect('https://collaborativepaint.herokuapp.com');
-        /*socket.on('news', function (data) {
-            socket.emit('my other event', { my: 'data' });
-        });*/
+
+        setScaleFactor();
+        window.addEventListener('orientationchange', function(){
+          setTimeout(function(){
+            setScaleFactor();
+          }, 200);
+        });
     },
 };
 
