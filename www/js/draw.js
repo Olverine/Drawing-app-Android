@@ -8,6 +8,8 @@ var color = document.getElementById("color");
 
 var drawing = false;
 
+var scalefactor = c.height / c.getBoundingClientRect().height;
+
 c.onmousedown = function(){
 	setToolbarExpanded(false);
 	drawing = true
@@ -35,8 +37,8 @@ document.onmousemove = function(evt){
 function getMousePos(canv, evt) {
     var rect = canv.getBoundingClientRect();
     return {
-      x: (evt.clientX - rect.left) * canv.height / rect.height,
-      y: (evt.clientY - rect.top) * canv.height / rect.height
+      x: (evt.clientX - rect.left) * scalefactor,
+      y: (evt.clientY - rect.top) * scalefactor
     };
 }
 
@@ -44,8 +46,8 @@ function getTouchPos(canv, evt) {
     var rect = canv.getBoundingClientRect();
     var touch = evt.touches[0];
     return {
-      x: (touch.clientX - rect.left) * canv.height / rect.height,
-      y: (touch.clientY - rect.top) * canv.height / rect.height
+      x: (touch.clientX - rect.left) * scalefactor,
+      y: (touch.clientY - rect.top) * scalefactor
     };
 }
 
@@ -79,6 +81,8 @@ function draw(pos1, pos2, tool, color, width, emit){
 		break;
 	}
 
-	//if(emit)
-	//	socket.emit("draw", pos1.x, pos1.y, pos2.x, pos2.y, color, width, tool);
+	console.log(scalefactor);
+
+	if(emit)
+		socket.emit("draw", pos1.x / 2, pos1.y / 2, pos2.x / 2, pos2.y / 2, color, width / 2, tool);
 }

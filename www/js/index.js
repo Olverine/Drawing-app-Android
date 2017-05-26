@@ -18,7 +18,8 @@
  */
 
 var toolbar = document.getElementById("toolbar");
-var toolbarButton = document.getElementById('toolbarButton')
+var toolbarButton = document.getElementById('toolbarButton');
+var socket;
 
 var app = {
     // Application Constructor
@@ -33,6 +34,11 @@ var app = {
     onDeviceReady: function() {
         screen.orientation.lock('landscape');
         toolbarButton.addEventListener("click", toggleToolbar);
+
+        socket = io.connect('https://collaborativepaint.herokuapp.com');
+        /*socket.on('news', function (data) {
+            socket.emit('my other event', { my: 'data' });
+        });*/
     },
 };
 

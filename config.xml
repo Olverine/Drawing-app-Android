@@ -8,7 +8,8 @@
         Apache Cordova Team
     </author>
     <content src="index.html" />
-    <access origin="*" />
+    <access origin="*.https://collaborativepaint.herokuapp.com" />
+    <allow-navigation href="*://*.collaborativepaint.herokuapp.com/*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
@@ -25,5 +26,6 @@
     <engine name="android" spec="~6.2.3" />
     <engine name="browser" spec="^4.1.0" />
     <plugin name="cordova-plugin-screen-orientation" spec="^2.0.1" />
+    <plugin name="cordova-plugin-websocket" spec="^0.12.2" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
 </widget>
