@@ -16,6 +16,10 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
+var toolbar = document.getElementById("toolbar");
+var toolbarButton = document.getElementById('toolbarButton')
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -27,8 +31,27 @@ var app = {
     // Bind any cordova events here. Common events are:
     // 'pause', 'resume', etc.
     onDeviceReady: function() {
-        screen.orientation.lock('landscape')
+        screen.orientation.lock('landscape');
+        toolbarButton.addEventListener("click", toggleToolbar);
     },
+};
+
+function toggleToolbar(){
+    if(toolbar.className == "collapsed"){
+      setToolbarExpanded(true);
+    }else{
+      setToolbarExpanded(false);
+    }
+};
+
+function setToolbarExpanded(expanded){
+    if(expanded){
+      toolbar.className = "expanded";
+      toolbarButton.innerHTML = "&lsaquo;";
+    }else{
+      toolbar.className = "collapsed";
+      toolbarButton.innerHTML = "&rsaquo;";
+    }
 };
 
 app.initialize();

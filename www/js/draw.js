@@ -9,6 +9,7 @@ var color = document.getElementById("color");
 var drawing = false;
 
 c.onmousedown = function(){
+	setToolbarExpanded(false);
 	drawing = true
 	draw(pos, pos, document.getElementById("toolSelect").value, color.value, sizeRange.value, true);
 }
@@ -34,8 +35,8 @@ document.onmousemove = function(evt){
 function getMousePos(canv, evt) {
     var rect = canv.getBoundingClientRect();
     return {
-      x: evt.clientX - rect.left,
-      y: evt.clientY - rect.top
+      x: (evt.clientX - rect.left) * canv.height / rect.height,
+      y: (evt.clientY - rect.top) * canv.height / rect.height
     };
 }
 
@@ -43,12 +44,13 @@ function getTouchPos(canv, evt) {
     var rect = canv.getBoundingClientRect();
     var touch = evt.touches[0];
     return {
-      x: touch.clientX - rect.left,
-      y: touch.clientY - rect.top
+      x: (touch.clientX - rect.left) * canv.height / rect.height,
+      y: (touch.clientY - rect.top) * canv.height / rect.height
     };
 }
 
 c.ontouchstart = function(evt){
+	setToolbarExpanded(false);
 	pos = getTouchPos(c, evt);
 	draw(pos, pos, document.getElementById("toolSelect").value, color.value, sizeRange.value, true);
 }
@@ -60,6 +62,7 @@ c.ontouchmove = function(evt){
 };
 
 function draw(pos1, pos2, tool, color, width, emit){
+	width *= 2
 	switch(tool){
 		case "pen":
 			ctx.beginPath();
