@@ -19,6 +19,7 @@
 
 var toolbar = document.getElementById("toolbar");
 var toolbarButton = document.getElementById('toolbarButton');
+var gridCheckbox = document.getElementById("gridCheck");
 var socket;
 
 var app = {
@@ -34,6 +35,7 @@ var app = {
     onDeviceReady: function() {
         screen.orientation.lock('landscape');
         toolbarButton.addEventListener("click", toggleToolbar);
+        gridCheck.addEventListener("change", toggleGrid);
 
         socket = io.connect('https://collaborativepaint.herokuapp.com');
 

@@ -90,3 +90,11 @@ function draw(pos1, pos2, tool, color, width, emit){
 	if(emit)
 		socket.emit("draw", pos1.x / 2, pos1.y / 2, pos2.x / 2, pos2.y / 2, color, width / 2, tool);
 }
+
+function toggleGrid(){
+	if(gridCheckbox.checked){
+		c.className = "grid";
+	}else{
+		c.className = "";
+	}
+}
