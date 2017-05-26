@@ -19,7 +19,7 @@ h1{
     padding-right: 4em;
     position: fixed;
     width: 20em;
-    max-height: 100vh;
+    height: 100vh;
     transition: 0.2s ease;
     box-sizing: border-box;
 }

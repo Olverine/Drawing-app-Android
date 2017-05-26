@@ -38,6 +38,17 @@ var app = {
         gridCheck.addEventListener("change", toggleGrid);
 
         socket = io.connect('https://collaborativepaint.herokuapp.com');
+        socket.on("draw", function(startX, startY, x, y, color, width, tool){
+        	var pos1 = {
+        		x: startX * 2,
+        		y: startY * 2
+        	};
+        	var pos2 = {
+        		x: x * 2,
+        		y: y * 2
+        	};
+        	draw(pos1, pos2, tool, color, width, false);
+        });
 
         setScaleFactor();
         window.addEventListener('orientationchange', function(){
