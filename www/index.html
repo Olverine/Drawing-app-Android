@@ -40,9 +40,20 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         <link rel="stylesheet" type="text/css" href="css/index.css">
         <link rel="stylesheet" type="text/css" href="css/inputs.css">
-        <title>Hello World</title>
+	<link rel="stylesheet" type="text/css" href="css/ripple.css">
+        <title>DRAW!</title>
     </head>
     <body>
+
+        <div id="loadingScreen">
+                <h1>Loading...</h1>
+                <div class='uil-ripple-css' style='transform:scale(0.98);'><div></div><div></div></div>
+        </div>
+
+	<div id="loginScreen">
+		<input id="username" placeholder="Username"></input>
+		<button>Login</button>
+	</div>
 
     <div id="toolbar" class="collapsed">
         <h1>Tools</h1><br>

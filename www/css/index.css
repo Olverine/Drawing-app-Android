@@ -3,6 +3,7 @@ body{
     background-color: #eee;
     margin: 0px;
     user-select: none;
+    overflow: hidden;
 }
 
 canvas, #toolbar{
@@ -75,4 +76,26 @@ canvas{
 
 .grid{
     background-image: url(../img/TRANSPARENT.png);
+}
+
+#loadingScreen, #loginScreen{
+/*	position: fixed;*/
+	width: 100vw;
+	height: 100vh;
+	top: 0px;
+	left: 0px;
+	background-color: #9C27B0;
+	z-index: 100;
+}
+
+#loadingScreen h1{
+	position: absolute;
+	color: white;
+	margin: 1em;
+	bottom: 0px;
+}
+
+#loginScreen{
+	padding: 40vh;
+	box-sizing: border-box;
 }

@@ -79,12 +79,25 @@ input[type=range]:focus::-ms-fill-upper {
   background: #367ebd;
 }
 
-select, input{
+select{
   border-radius: 8px;
   padding: 0.2em;
-  background-color: transparent;
+  background-color: white;
   color: #9C27B0;
   margin: 1em;
+}
+
+input{
+  background-color: transparent;
+  border: none;
+  color: white;
+  border-bottom: 4px solid white;
+  font-size: 2em;
+}
+
+::-webkit-input-placeholder{
+  color: white;
+  font-style: italic;
 }
 
 button:focus, input:focus, select:focus {

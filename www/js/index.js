@@ -20,6 +20,7 @@
 var toolbar = document.getElementById("toolbar");
 var toolbarButton = document.getElementById('toolbarButton');
 var gridCheckbox = document.getElementById("gridCheck");
+var loginForm = document.getElementById("loginScreen");
 var socket;
 
 var app = {
@@ -33,11 +34,16 @@ var app = {
     // Bind any cordova events here. Common events are:
     // 'pause', 'resume', etc.
     onDeviceReady: function() {
+	document.getElementById("loadingScreen").getElementsByTagName("h1")[0].innerHTML = "Connecting...";
         screen.orientation.lock('landscape');
+	loginForm.getElementsByTagName("button")[0].addEventListener("click", login);
         toolbarButton.addEventListener("click", toggleToolbar);
         gridCheck.addEventListener("change", toggleGrid);
 
         socket = io.connect('https://collaborativepaint.herokuapp.com');
+	socket.on('connect', function(){
+		document.getElementById("loadingScreen").style.display = 'none';
+	});
         socket.on("draw", function(startX, startY, x, y, color, width, tool){
         	var pos1 = {
         		x: startX * 2,
@@ -76,5 +82,10 @@ function setToolbarExpanded(expanded){
       toolbarButton.innerHTML = "&rsaquo;";
     }
 };
+
+function login(){
+    socket.emit("login", document.getElementById("username").value);
+    loginForm.style.display = "none";
+}
 
 app.initialize();
