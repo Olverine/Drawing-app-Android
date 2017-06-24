@@ -43,6 +43,10 @@ var app = {
         socket = io.connect('https://collaborativepaint.herokuapp.com');
 	socket.on('connect', function(){
 		document.getElementById("loadingScreen").style.display = 'none';
+		if(window.localStorage.getItem("username") !== null){
+                	loginForm.style.display = "none";
+			socket.emit("login", window.localStorage.getItem("username"));
+        	}
 	});
         socket.on("draw", function(startX, startY, x, y, color, width, tool){
         	var pos1 = {
@@ -84,7 +88,9 @@ function setToolbarExpanded(expanded){
 };
 
 function login(){
-    socket.emit("login", document.getElementById("username").value);
+    var username = document.getElementById("username").value;
+    socket.emit("login", username);
+    window.localStorage.setItem("username", username);
     loginForm.style.display = "none";
 }
 
