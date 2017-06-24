@@ -97,5 +97,6 @@ canvas{
 
 #loginScreen{
 	padding: 40vh;
+	padding-left: 4em;
 	box-sizing: border-box;
 }
